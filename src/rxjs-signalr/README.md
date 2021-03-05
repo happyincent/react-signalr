@@ -1,50 +1,39 @@
-# react-signalr
+# rxjs-signalr
 
-This hook is designed to be a proxy to the main [HubConnection](https://docs.microsoft.com/zh-tw/javascript/api/@microsoft/signalr/hubconnection?view=signalr-js-latest) capabilities.
+RxJS wrapper for SignalR.
 
 ## Installation
 
 ```
-npm install --save @happyincent/react-signalr
+npm install --save @happyincent/rxjs-signalr
 ```
 
-You also need @microsoft/signalr, react (>= 16.8) and rxjs (>= 6) installed in your project.
+You also need @microsoft/signalr and rxjs (>= 6) installed in your project.
 
 ## Usage
 
 ```ts
 const signalrEndpoint = 'https://...';
 
-function MyComponent() {
-  ...
+const { on } = createSignalRHub({
+  hubUrl: signalrEndpoint,
+  onComplete: (hubUrl, error) => error && alert(`SignalR: disconnected\n${hubUrl}\n${error}`),
+});
 
-  const { on } = useSignalR({
-    hubUrl: signalrEndpoint,
-    onComplete: (hubUrl, error) => error && alert(`SignalR: disconnected\n${hubUrl}\n${error}`),
-  });
-  
-  useEffect(() => {
-    const sub = on("ReceiveMessage").subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-    return () => sub.unsubscribe();
-  }, [on]);
+const sub = on("ReceiveMessage").subscribe(
+  (res) => console.log(res),
+  (err) => console.log(err)
+);
 
-  ...
-}
+sub.unsubscribe();
 ```
-
-Connections are cached, it means that if you open a connection to an url, further calls to `useSignalR` with the same url will use the same connection.
-
-When the last hook using a specific connection is unmounted, this connection is closed.
 
 ## API
 
-### useSignalR
+### createSignalRHub
 
 ```ts
-function useSignalR(props: SignalRHubProps): SignalRHubResult;
+function createSignalRHub(props: SignalRHubProps): SignalRHubResult;
 
 interface SignalRHubProps {
   /* The URL the connection will use. */

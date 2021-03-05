@@ -1,5 +1,5 @@
 {
-  "name": "@happyincent/react-signalr",
+  "name": "@happyincent/rxjs-signalr",
   "version": "1.0.0",
   "description": "RxJS wrapper for SignalR.",
   "main": "dist/index.js",
@@ -13,11 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/happyincent/react-signalr.git"
+    "url": "git+https://github.com/happyincent/react-signalr/tree/main/src/rxjs-signalr"
   },
   "keywords": [
-    "react",
-    "react hook",
     "signalr",
     "rxjs",
     "typescript"
@@ -27,17 +25,14 @@
   "bugs": {
     "url": "https://github.com/happyincent/react-signalr/issues"
   },
-  "homepage": "https://github.com/happyincent/react-signalr#readme",
+  "homepage": "https://github.com/happyincent/react-signalr/tree/main/src/rxjs-signalr#readme",
   "devDependencies": {
     "@microsoft/signalr": "^5.0.3",
-    "@types/react": "^17.0.2",
-    "react": "^17.0.1",
     "rxjs": "^6.6.6",
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
     "@microsoft/signalr": "^5.0.3",
-    "react": "^17.0.1",
     "rxjs": "^6.6.6"
   },
   "prettier": {
