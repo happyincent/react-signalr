@@ -1,12 +1,8 @@
-import {
-  HubConnection,
-  HubConnectionBuilder,
-  HubConnectionState,
-  IHttpConnectionOptions,
-  LogLevel,
-} from "@microsoft/signalr";
+import { HubConnection, HubConnectionState, IHttpConnectionOptions } from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { EMPTY, fromEventPattern, merge, Observable, of, throwError } from "rxjs";
-import { catchError, concatMap, delay, map, retryWhen, share, shareReplay, switchMap } from "rxjs/operators";
+import { map, share, shareReplay, switchMap } from "rxjs/operators";
+import { catchError, concatMap, defaultIfEmpty, delay, retryWhen } from "rxjs/operators";
 
 //////////////////////////////////////////////////
 
@@ -113,6 +109,7 @@ export function setupHubState(getHubConn: () => Observable<HubConnection>): Obse
         )
       )
     )
+    .pipe(defaultIfEmpty<HubConnectionState>(HubConnectionState.Disconnected))
     .pipe(
       // everyone subscribing will get the same connection
       // refCount is used to complete the observable when there is no subscribers left
