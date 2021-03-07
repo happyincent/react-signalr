@@ -1,7 +1,7 @@
 {
   "name": "@happyincent/react-signalr",
   "version": "1.0.0",
-  "description": "RxJS wrapper for SignalR.",
+  "description": "Reack hook & RxJS wrapper for SignalR.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

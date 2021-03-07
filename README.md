@@ -4,10 +4,6 @@ This hook is designed to be a proxy to the main [HubConnection](https://docs.mic
 
 ## Installation
 
-```
-npm install --save @happyincent/react-signalr
-```
-
 You also need @microsoft/signalr, react (>= 16.8) and rxjs (>= 6) installed in your project.
 
 ## Usage

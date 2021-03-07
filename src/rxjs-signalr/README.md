@@ -4,10 +4,6 @@ RxJS wrapper for SignalR.
 
 ## Installation
 
-```
-npm install --save @happyincent/rxjs-signalr
-```
-
 You also need @microsoft/signalr and rxjs (>= 6) installed in your project.
 
 ## Usage
